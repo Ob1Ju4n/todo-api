@@ -1,21 +1,14 @@
 var express = require('express');
 var app = express();
+var bodyParser =  require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 
-var todoList = [{
-    id: '1',
-    description: 'ToDo example',
-    completed: false
-}, {
-    id: '2',
-    description: 'Second ToDo example',
-    completed: false
-}, {
-    id: '3',
-    description: 'Third ToDo example',
-    completed: true
-}];
+var todoList = [];
+var nextTodoId = 1;
+
+// Middleware:
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.send('API root');
@@ -28,13 +21,22 @@ app.get('/todos', function (req, res) {
 
 // GET /todos/id
 app.get('/todos/:id', function (req, res) {
-    var result = todoList.find(e => e.id === req.params.id);
+    var result = todoList.find(e => e.id === parseInt(req.params.id));
 
     if (result) {
         res.json(result);
     } else {
         res.status(404).send();
     }
+});
+
+// POST /todos
+app.post('/todos', function (req, res) {
+    var body = req.body;
+    body.id = nextTodoId;
+    todoList.push(body);
+    nextTodoId++;
+    res.json(body);
 });
 
 
