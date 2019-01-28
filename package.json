@@ -1,25 +1,26 @@
 {
-  "name": "todo-api",
-  "version": "1.0.0",
-  "description": "API project from NodeJS developer course",
-  "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ob1Ju4n/todo-api.git"
-  },
-  "author": "Juan Ortix",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ob1Ju4n/todo-api/issues"
-  },
-  "homepage": "https://github.com/Ob1Ju4n/todo-api#readme"
+    "name": "todo-api",
+    "version": "1.0.0",
+    "description": "API project from NodeJS developer course",
+    "main": "server.js",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "underscore": "^1.9.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ob1Ju4n/todo-api.git"
+    },
+    "author": "Juan Ortix",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ob1Ju4n/todo-api/issues"
+    },
+    "homepage": "https://github.com/Ob1Ju4n/todo-api#readme"
 }
