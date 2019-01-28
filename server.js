@@ -48,6 +48,18 @@ app.post('/todos', function (req, res) {
     res.json(body);
 });
 
+// DELETE /todos/:id
+app.delete('/todos/:id', function (req, res) {
+    var deleted = _.findWhere(todoList, {id: parseInt(req.params.id, 10)});
+
+    if (deleted) {
+        todoList = _.without(todoList, deleted);
+        res.json(deleted);
+    } else {
+        res.status(404).json({error: 'Resource could not be found'}).send();
+    }
+});
+
 
 app.listen(PORT, function () {
     console.log('Express listening on port ' + PORT + ' ...');
