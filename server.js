@@ -15,10 +15,21 @@ app.get('/', function (req, res) {
     res.send('API root');
 });
 
-// GET /todos
+// GET /todos Accepts query params
 app.get('/todos', function (req, res) {
-    res.json(todoList);
+    var queryParams = _.pick(req.query, 'completed');
+    var filteredToDos = todoList;
+    console.log(JSON.stringify(queryParams));
+
+    if (queryParams.hasOwnProperty('completed') && queryParams.completed.toLowerCase() === 'true') {
+        filteredToDos = _.where(filteredToDos, {completed: true});
+    } else if (queryParams.hasOwnProperty('completed') && queryParams.completed.toLowerCase() === 'false') {
+        filteredToDos = _.where(filteredToDos, {completed: false});
+    }
+
+    res.json(filteredToDos);
 });
+
 
 // GET /todos/id
 app.get('/todos/:id', function (req, res) {
